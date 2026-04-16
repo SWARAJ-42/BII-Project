@@ -1,0 +1,69 @@
+{
+  "model": "3D U-Net (MONAI)",
+  "num_classes": 10,
+  "patch_size": [
+    96,
+    96,
+    96
+  ],
+  "epochs": 250,
+  "best_val_dsc": 0.505,
+  "test_dsc": 0.509,
+  "test_iou": 0.4049,
+  "per_organ": [
+    {
+      "Organ": "Aorta",
+      "DSC Mean": 0.4022,
+      "DSC Std": 0.2693,
+      "IoU Mean": 0.2862
+    },
+    {
+      "Organ": "Gallbladder",
+      "DSC Mean": 0.4388,
+      "DSC Std": 0.2521,
+      "IoU Mean": 0.3141
+    },
+    {
+      "Organ": "Spleen",
+      "DSC Mean": 0.676,
+      "DSC Std": 0.2377,
+      "IoU Mean": 0.5519
+    },
+    {
+      "Organ": "Left Kidney",
+      "DSC Mean": 0.7121,
+      "DSC Std": 0.2546,
+      "IoU Mean": 0.6002
+    },
+    {
+      "Organ": "Right Kidney",
+      "DSC Mean": 0.883,
+      "DSC Std": 0.0663,
+      "IoU Mean": 0.7966
+    },
+    {
+      "Organ": "Liver",
+      "DSC Mean": 0.3652,
+      "DSC Std": 0.1071,
+      "IoU Mean": 0.2289
+    },
+    {
+      "Organ": "Stomach",
+      "DSC Mean": 0.0287,
+      "DSC Std": 0.0277,
+      "IoU Mean": 0.0148
+    },
+    {
+      "Organ": "Pancreas",
+      "DSC Mean": 0.7213,
+      "DSC Std": 0.2482,
+      "IoU Mean": 0.6108
+    },
+    {
+      "Organ": "IVC",
+      "DSC Mean": 0.3533,
+      "DSC Std": 0.2355,
+      "IoU Mean": 0.2406
+    }
+  ]
+}
