@@ -10,8 +10,6 @@ The workflow encompasses dataset acquisition, preprocessing, patch-based trainin
 
 The implementation is provided in `main.ipynb`, with outputs and evaluation artifacts stored in the `results` directory. The full pipeline can be referenced in .
 
----
-
 ## Execution Environment
 
 The pipeline is designed for GPU-enabled environments with limited memory resources. It is recommended to execute the notebook in one of the following:
@@ -20,8 +18,6 @@ The pipeline is designed for GPU-enabled environments with limited memory resour
 * Kaggle Notebooks (NVIDIA T4 GPU)
 
 Execution on local systems without sufficient GPU memory may lead to failure during training or inference due to the high memory demands of volumetric data.
-
----
 
 ## Dataset and Sampling Configuration
 
@@ -46,8 +42,6 @@ GB_CAP = 6.0
 * Replace lexicographic selection with randomized sampling to reduce bias
 * Perform class distribution analysis prior to training
 
----
-
 ## Input Representation and Patch-Based Training
 
 Training is conducted using fixed-size 3D patches extracted from volumetric CT scans.
@@ -71,8 +65,6 @@ BATCH_SIZE = 4
 * Increase `PATCH_SIZE` to incorporate more anatomical context, subject to memory limits
 * Increase `NUM_SAMPLES` to improve representation of small or sparse organs
 * Adjust `BATCH_SIZE` in accordance with available GPU memory
-
----
 
 ## Preprocessing Pipeline
 
@@ -105,8 +97,6 @@ The preprocessing stage standardizes spatial resolution and intensity distributi
 * Adjust voxel spacing for higher resolution at increased computational cost
 * Evaluate the impact of disabling or modifying cropping for large organs
 
----
-
 ## Data Augmentation
 
 Augmentation is applied during training to improve generalization.
@@ -126,8 +116,6 @@ Augmentation is applied during training to improve generalization.
 
 * Increase augmentation probabilities for improved generalization
 * Introduce additional transformations such as elastic deformation for advanced experimentation
-
----
 
 ## Model Configuration
 
@@ -153,8 +141,6 @@ dropout = 0.1
 * Increase capacity when training on larger datasets
 * Adjust dropout to control overfitting
 
----
-
 ## Loss Function
 
 The model is optimized using a compound loss function:
@@ -172,8 +158,6 @@ DiceCELoss(include_background=False)
 
 * Introduce class weighting to address imbalance
 * Experiment with alternative losses such as focal or generalized Dice loss for improved performance on small organs
-
----
 
 ## Optimizer and Learning Rate Schedule
 
@@ -196,8 +180,6 @@ Scheduler = CosineAnnealingLR
 * Decrease learning rate for fine-tuning
 * Replace scheduler with adaptive alternatives if validation performance stagnates
 
----
-
 ## Inference Strategy
 
 Inference is performed using sliding-window evaluation over full volumes.
@@ -219,8 +201,6 @@ overlap = 0.5
 * Increase overlap for smoother predictions
 * Adjust window size based on patch configuration
 
----
-
 ## Evaluation Metrics
 
 Performance is assessed using Dice Similarity Coefficient (DSC), Intersection over Union (IoU), precision, and recall, computed per organ and averaged.
@@ -230,8 +210,6 @@ Performance is assessed using Dice Similarity Coefficient (DSC), Intersection ov
 * DSC and IoU evaluate region overlap
 * Precision and recall diagnose over- and under-segmentation
 * Background exclusion ensures meaningful evaluation
-
----
 
 ## Observed Limitations
 
@@ -244,8 +222,6 @@ Empirical results indicate the following common issues:
 
 These limitations arise primarily from dataset constraints, class imbalance, and limited spatial context.
 
----
-
 ## Recommendations for Improvement
 
 * Increase dataset size and diversity
@@ -253,8 +229,6 @@ These limitations arise primarily from dataset constraints, class imbalance, and
 * Introduce weighted or adaptive loss functions
 * Increase patch size to incorporate global anatomical context
 * Apply post-processing techniques to remove spurious predictions
-
----
 
 ## Outputs
 
@@ -265,10 +239,6 @@ The pipeline generates the following artifacts within the `results` directory:
 * Visual comparisons of CT slices, ground truth, and predictions
 * Summary statistics in structured format
 
----
-
 ## Conclusion
 
 The presented pipeline demonstrates a modular and reproducible framework for 3D medical image segmentation under constrained computational settings. Performance is influenced significantly by data distribution, preprocessing choices, and training configuration. Careful calibration of these components is essential for achieving robust and clinically meaningful segmentation results.
-
----
